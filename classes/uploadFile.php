@@ -197,6 +197,22 @@ class uploadFile {
             return $this->destination . $n . '.' . $this->ext;
         }
     }
+    /**
+     * Método estático para subir multiples ficheros a la vez
+     * @param Array de ficheros $files
+     * @param boolean $overwrite
+     * @param string $destination
+     */
+    public static function MultiUpoad($files, $overwrite=true, $destination=null){
+        foreach ($files as $file){
+            $upFile = new uploadFile($file, $destination);
+            if($upFile->upload($overwrite)){
+                echo "Archivo subido<br/>";
+            }else{
+                echo "error subiendo el archivo: " . $upFile->getError_message() . "<br/>";
+            }
+        }
+    }
     /*
      *  getters y setters
      */
