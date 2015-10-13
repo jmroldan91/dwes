@@ -189,13 +189,13 @@ class uploadFile {
      * @return string Ruta completa del archivo válido a subir
      */
     private function renameIfExists($n) {
-        if (file_exists($this->destination . $n . '.' . $this->ext)) {
-            $n.=rand(0, 999);
-            return $this->renameIfExists($n);
-        } else {
-            $this->name = $n;
-            return $this->destination . $n . '.' . $this->ext;
+        $i=1;
+        $newName = $n; 
+        while (file_exists($this->destination . $n . '.' . $this->ext)){
+            $newName = $n . $i;
+            $i++;
         }
+        return $this->destination . $newName . '.' . $this->ext;
     }
     /**
      * Método estático para subir multiples ficheros a la vez
