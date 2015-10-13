@@ -213,6 +213,21 @@ class uploadFile {
             }
         }
     }
+    /**
+     * Metodo steatico para subir un archivo
+     * @param array $file Datos del archivo (requerido)
+     * @param String $dest Ruta de subida (opcional)
+     * @param int $max_size Tamaño máximo del archivo (opcional)
+     * @return boolean | string True si todo correcto o el mensaje de error en caso contrario
+     */
+    public static function load($file, $dest = null, $max_size = null){
+        $new = new uploadFile($file, $dest, $max_size);
+        if($new->upload()){
+            return true;
+        }else{
+            return $new->error_message;
+        }
+    }
     /*
      *  getters y setters
      */
