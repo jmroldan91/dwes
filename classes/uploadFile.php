@@ -203,7 +203,7 @@ class uploadFile {
      * @param boolean $overwrite
      * @param string $destination
      */
-    public static function MultiUpoad($files, $overwrite=true, $destination=null){
+    public static function MultiUpload($files, $overwrite=true, $destination=null){
         foreach ($files as $file){
             $upFile = new uploadFile($file, $destination);
             if($upFile->upload($overwrite)){
