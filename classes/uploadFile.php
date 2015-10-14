@@ -206,11 +206,7 @@ class uploadFile {
     public static function MultiUpload($files, $overwrite=true, $destination=null){
         foreach ($files as $file){
             $upFile = new uploadFile($file, $destination);
-            if($upFile->upload($overwrite)){
-                echo "Archivo subido<br/>";
-            }else{
-                echo "error subiendo el archivo: " . $upFile->getError_message() . "<br/>";
-            }
+            $upFile->upload($overwrite);
         }
     }
     /**
@@ -220,7 +216,7 @@ class uploadFile {
      * @param int $max_size Tamaño máximo del archivo (opcional)
      * @return boolean | string True si todo correcto o el mensaje de error en caso contrario
      */
-    public static function load($file, $dest = null, $max_size = null){
+    public static function loadFile($file, $dest = null, $max_size = null){
         $new = new uploadFile($file, $dest, $max_size);
         return $new->upload();
     }
