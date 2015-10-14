@@ -47,6 +47,8 @@ class uploadFile {
      * @var string Mensage de error actual.
      */
     private $error_message;
+    private $img_array = array(3 => "jpg", 1 => "png", 2 => "gif", 4 => "svg");
+    private $doc_array = array(3 => "txt", 1 => "pdf", 2 => "xls", 4 => "doc");
     /**
      * Constantes de la clase directorios por defecto de subida según el tipo de archivo
      */
@@ -137,8 +139,6 @@ class uploadFile {
      */
     private function generateDestination($dest) {        
         if ($dest === null) {
-            $img_array = array(3 => "jpg", 1 => "png", 2 => "gif", 4 => "svg");
-            $doc_array = array(3 => "txt", 1 => "pdf", 2 => "xls", 4 => "doc");
             if (array_search($this->ext, $img_array) >= 1) {
                 return self::IMG_DIR;
             }
